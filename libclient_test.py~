@@ -21,8 +21,6 @@ sizes = driver.list_sizes()
 for size in sizes:
     print(size)
 
-locations = driver.list_locations()
-
 keys = driver.list_key_pairs()
 for key in keys:
     print(key)
@@ -32,12 +30,11 @@ ssh_key = driver.create_key_pair('bee_test_key')
 
 print(ssh_key.private_key)
 
-bee_node = driver.create_node(ex_keyname = 'bee_test_key',
-                              name = "bee-node",
-                              size = sizes[0],
-                              image = images[0],
-                              ex_availability_zone = locations[0]
-                              )
+bee_node = driver.create_node(ssh_key = ssh_key,
+                   name = "bee-node",
+                   size = sizes[0],
+                   image = images[0],
+                   )
 
 
 
