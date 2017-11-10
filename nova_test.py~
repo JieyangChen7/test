@@ -1,0 +1,11 @@
+from keystoneauth1 import loading
+from keystoneauth1 import session
+from novaclient import client
+
+loader = loading.get_plugin_loader('password')
+auth = loader.load_from_options(auth_url = 'https://chi.tacc.chameleoncloud.org:5000/v2.0',
+                                username = 'cjy7117',
+                                password = 'Wait4aTrain7!',
+                                project_id = '3e35a9401df74141b2e909ef1f28aef7')
+sess = session.Session(auth=auth)
+nova = client.Client('2', session=sess)
